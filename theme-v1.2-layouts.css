@@ -193,7 +193,8 @@ body.evidence-authority-v12 .hero {
   margin: 30px auto 0;
   padding: 58px 0 0;
   border-radius: 36px;
-  background: var(--mist);
+  color: #fff;
+  background: #102b43;
   overflow: hidden;
 }
 
@@ -204,8 +205,32 @@ body.evidence-authority-v12 .hero::after {
   height: 400px;
   right: -170px;
   top: -180px;
-  border: 74px solid rgba(114,160,171,.13);
+  border: 74px solid rgba(155,208,188,.12);
   border-radius: 50%;
+}
+
+body.evidence-authority-v12 .hero .kicker {
+  color: #9bd0bc;
+}
+
+body.evidence-authority-v12 .hero .lede {
+  color: #d7e2ea;
+}
+
+body.evidence-authority-v12 .hero .button.primary {
+  color: #102b43;
+  border-color: #fff;
+  background: #fff;
+}
+
+body.evidence-authority-v12 .hero .quick-link {
+  color: #fff;
+}
+
+body.evidence-authority-v12 .hero .badge {
+  color: #dff3eb;
+  border-color: rgba(194,229,215,.45);
+  background: rgba(54,117,92,.34);
 }
 
 body.evidence-authority-v12 .hero-grid {
@@ -240,10 +265,10 @@ body.evidence-authority-v12 .v12-task-card {
   gap: 17px;
   align-items: center;
   padding: 20px 22px;
-  border: 1px solid #dae5e7;
+  border: 1px solid rgba(215,226,234,.72);
   border-radius: 22px;
   background: #fff;
-  box-shadow: 0 9px 22px rgba(38,66,70,.06);
+  box-shadow: 0 12px 28px rgba(7,31,53,.22);
 }
 
 body.evidence-authority-v12 .v12-task-card b {
@@ -741,4 +766,3 @@ body.human-proof-v12 .record:nth-child(even) {
     display: none;
   }
 }
-
