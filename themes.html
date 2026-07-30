@@ -1,0 +1,472 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EQRAZ Homepage — Four Theme Comparison</title>
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Instrument+Sans:wdth,wght@75..100,400..700&family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #171b1b;
+      --muted: #596262;
+      --line: #dfe5e3;
+      --white: #ffffff;
+      --soft-sage: #e7f2ed;
+      --soft-blue: #edf5f7;
+      --soft-lilac: #f2f0f8;
+      --green: #28724f;
+      --focus: #1e67d6;
+      --radius: 24px;
+      --shadow: 0 14px 34px rgba(30, 48, 43, .08);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: #f3f5f4; color: var(--ink); }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    a { color: inherit; }
+    button:focus-visible, a:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+
+    .review-shell {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255,255,255,.96);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(12px);
+      font-family: "WNTL Text", "Helvetica Neue", Arial, sans-serif;
+    }
+    .review-top {
+      min-height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 8px 22px;
+      color: #47504e;
+      font-size: 13px;
+      border-bottom: 1px solid #eef1ef;
+    }
+    .review-top strong { color: #141817; }
+    .review-top span:last-child { white-space: nowrap; }
+    .theme-tabs {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(160px, 1fr));
+      gap: 8px;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 10px 18px 12px;
+    }
+    .theme-tab {
+      border: 1px solid #dce2df;
+      background: #fff;
+      color: #2a3130;
+      border-radius: 999px;
+      min-height: 44px;
+      padding: 8px 14px;
+      font: 700 14px/1.2 "Helvetica Neue", Arial, sans-serif;
+      cursor: pointer;
+    }
+    .theme-tab[aria-selected="true"] { background: #171b1b; color: #fff; border-color: #171b1b; }
+    .theme-tab small { display: block; opacity: .72; font-weight: 400; font-size: 11px; margin-top: 2px; }
+
+    .version { display: none; min-height: 100vh; background: #fff; }
+    .version.active { display: block; }
+    .site-wrap { max-width: 1440px; margin: 0 auto; background: #fff; overflow: hidden; }
+    .site-header {
+      min-height: 82px;
+      padding: 0 42px;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 34px;
+      background: #fff;
+      border-bottom: 1px solid #edf0ef;
+    }
+    .brand { text-decoration: none; font-weight: 900; letter-spacing: -.045em; font-size: 25px; }
+    .brand::after { content: "logo placeholder"; display: block; font-size: 8px; letter-spacing: .08em; text-transform: uppercase; font-weight: 600; color: #8b9391; }
+    .site-nav { display: flex; justify-content: center; gap: 28px; font-size: 15px; }
+    .site-nav a { text-decoration: none; }
+    .site-actions { display: flex; align-items: center; gap: 18px; }
+    .quiet-link { text-decoration: none; font-size: 14px; }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 24px;
+      border-radius: 999px;
+      background: #181b1b;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+      border: 1px solid #181b1b;
+    }
+    .pill.light { color: #171b1b; background: #fff; border-color: #cfd6d3; }
+    .eyebrow { text-transform: uppercase; letter-spacing: .13em; font-size: 12px; font-weight: 800; color: #65706d; }
+    .micro { color: #69726f; font-size: 12px; line-height: 1.5; }
+    .arrow { font-size: 22px; line-height: 1; }
+    .soft-icon {
+      width: 44px; height: 44px; border-radius: 14px; display: grid; place-items: center;
+      background: var(--soft-sage); color: #205b42; font-weight: 900;
+    }
+
+    /* VERSION 1 — ROCKET-INSPIRED */
+    .v1 { font-family: "WNTL Text", "Helvetica Neue", Helvetica, Arial, sans-serif; }
+    .v1 .hero {
+      position: relative;
+      min-height: 660px;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 98px 22px 150px;
+      background: #fff;
+    }
+    .v1 .hero-copy { position: relative; z-index: 3; max-width: 760px; }
+    .v1 h1 { margin: 12px 0 26px; font-size: clamp(48px, 6vw, 78px); line-height: .98; letter-spacing: -.055em; font-weight: 500; }
+    .v1 h1 span { display: block; color: #4b5d57; }
+    .v1 .hero p { max-width: 600px; margin: 0 auto 28px; font-size: 19px; line-height: 1.55; color: #4e5755; }
+    .orbit { position: absolute; inset: 36px 36px 90px; pointer-events: none; }
+    .photo-chip { position: absolute; width: 146px; height: 118px; border-radius: 22px; overflow: hidden; box-shadow: var(--shadow); border: 6px solid #fff; }
+    .photo-chip::before { content: ""; position: absolute; inset: 0; background: linear-gradient(145deg, #c4d9d1, #eef4f1 50%, #90aaa0); }
+    .photo-chip::after { content: attr(data-label); position: absolute; inset: auto 9px 8px; padding: 5px 7px; border-radius: 8px; background: rgba(255,255,255,.9); font-size: 9px; color: #4e5c57; }
+    .pc1 { left: 4%; top: 35%; transform: rotate(-11deg); }
+    .pc2 { left: 20%; top: 10%; transform: rotate(-6deg); }
+    .pc3 { right: 19%; top: 8%; transform: rotate(7deg); }
+    .pc4 { right: 4%; top: 38%; transform: rotate(12deg); }
+    .pc5 { left: 11%; bottom: 2%; transform: rotate(7deg); }
+    .pc6 { right: 10%; bottom: 2%; transform: rotate(-8deg); }
+    .v1 .path-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin: -76px 48px 0; position: relative; z-index: 5; }
+    .v1 .path-card { min-height: 132px; border: 1px solid #d9dfdd; background: #fff; border-radius: 22px; padding: 24px; text-decoration: none; display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 16px; box-shadow: 0 10px 25px rgba(26,35,32,.05); }
+    .v1 .path-card strong { display: block; font-size: 22px; font-weight: 500; margin-bottom: 7px; }
+    .v1 .path-card small { color: #68716f; font-size: 13px; line-height: 1.4; }
+    .v1 .proof-strip { margin: 46px 48px 74px; background: #f1f7f4; border-radius: 28px; padding: 30px 36px; display: grid; grid-template-columns: 1.35fr repeat(3, 1fr); gap: 26px; align-items: center; }
+    .v1 .proof-strip h2 { font-weight: 500; font-size: 28px; letter-spacing: -.03em; margin: 0; }
+    .proof-item { border-left: 1px solid #cfdcd6; padding-left: 24px; }
+    .proof-item strong { display: block; font-size: 16px; margin-bottom: 6px; }
+    .proof-item span { color: #66716d; font-size: 12px; line-height: 1.45; }
+
+    /* VERSION 2 — BANKRATE/RATEHUB-INSPIRED */
+    .v2 { font-family: "Instrument Sans", ui-sans-serif, system-ui, sans-serif; }
+    .v2 .site-header { font-family: "Instrument Sans", ui-sans-serif, system-ui, sans-serif; }
+    .v2 .evidence-hero { margin: 28px 42px 0; border-radius: 36px; background: #edf5f7; min-height: 500px; padding: 58px 62px; display: grid; grid-template-columns: 1.02fr .98fr; gap: 54px; align-items: center; overflow: hidden; position: relative; }
+    .v2 .evidence-hero::after { content: ""; width: 380px; height: 380px; border: 72px solid rgba(114,160,171,.13); border-radius: 50%; position: absolute; right: -150px; top: -160px; }
+    .v2 h1 { font-family: RecifeText, Georgia, serif; font-weight: 500; font-size: clamp(48px, 5vw, 68px); line-height: 1.05; letter-spacing: -.035em; margin: 15px 0 24px; max-width: 680px; }
+    .v2 .lead { font-size: 18px; line-height: 1.55; color: #4d5856; max-width: 590px; margin-bottom: 28px; }
+    .task-stack { display: grid; gap: 14px; position: relative; z-index: 2; }
+    .task-card { min-height: 112px; display: grid; grid-template-columns: auto 1fr auto; gap: 17px; align-items: center; background: #fff; border: 1px solid #dae5e7; padding: 20px 22px; border-radius: 22px; text-decoration: none; box-shadow: 0 9px 22px rgba(38,66,70,.06); }
+    .task-card:nth-child(2) .soft-icon { background: #eeeefa; color: #5a5682; }
+    .task-card:nth-child(3) .soft-icon { background: #edf3f7; color: #3b6373; }
+    .task-card h2 { font-family: RecifeText, Georgia, serif; margin: 0 0 4px; font-size: 22px; font-weight: 500; }
+    .task-card p { margin: 0; color: #5f6a68; font-size: 13px; }
+    .evidence-row { margin: 22px 42px 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .metric { border: 1px solid #dfe5e3; border-radius: 22px; padding: 22px; display: grid; grid-template-columns: auto 1fr; gap: 17px; align-items: center; }
+    .metric strong { font-family: RecifeText, Georgia, serif; color: #317088; font-size: 34px; font-weight: 500; }
+    .metric span { color: #4f5a58; font-size: 13px; line-height: 1.4; }
+    .v2 .rate-panel { margin: 44px 42px 74px; display: grid; grid-template-columns: .82fr 1.18fr; gap: 30px; align-items: start; }
+    .v2 .rate-panel h2 { font-family: RecifeText, Georgia, serif; font-size: 38px; line-height: 1.08; font-weight: 500; margin: 0 0 14px; }
+    .rate-record { border-radius: 24px; background: #f5f8f8; border: 1px solid #dfe6e4; padding: 25px 28px; display: grid; grid-template-columns: 1fr auto; gap: 12px; }
+    .rate-record strong { font-size: 38px; font-weight: 600; letter-spacing: -.03em; }
+    .rate-record span { color: #596461; font-size: 13px; }
+
+    /* VERSION 3 — LENDINGTREE-INSPIRED */
+    .v3 { font-family: Lato, sans-serif; }
+    .v3 .choice-hero { position: relative; min-height: 560px; margin: 0; padding: 64px 64px 48px; background: #e8f5ef; overflow: hidden; }
+    .v3 .choice-hero::before, .v3 .choice-hero::after { content: ""; position: absolute; border: 3px solid rgba(42,105,78,.13); border-radius: 48% 52% 44% 56%; transform: rotate(22deg); }
+    .v3 .choice-hero::before { width: 330px; height: 280px; right: 30px; top: 42px; }
+    .v3 .choice-hero::after { width: 220px; height: 180px; left: -90px; bottom: -70px; }
+    .v3 h1 { font-family: "DM Serif Display", Georgia, serif; font-size: clamp(52px, 5.6vw, 76px); line-height: 1; letter-spacing: -.025em; font-weight: 400; margin: 12px 0 14px; max-width: 920px; }
+    .v3 .choice-hero > p { font-size: 20px; margin: 0 0 30px; color: #35423e; }
+    .choice-chips { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 24px; }
+    .choice-chip { min-height: 42px; padding: 0 18px; border-radius: 999px; border: 1px solid #b8d3c7; background: rgba(255,255,255,.72); font-weight: 700; }
+    .choice-chip.active { background: #1f513b; color: #fff; border-color: #1f513b; }
+    .choice-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; max-width: 1040px; position: relative; z-index: 2; }
+    .choice-card { min-height: 168px; background: #fff; border: 1px solid #d6e4de; border-radius: 22px; box-shadow: 0 10px 22px rgba(36,73,58,.07); padding: 22px; text-decoration: none; display: flex; flex-direction: column; justify-content: space-between; }
+    .choice-card strong { font-size: 21px; }
+    .choice-card p { color: #5a6662; font-size: 13px; line-height: 1.45; margin: 7px 0; }
+    .choice-card .arrow { align-self: flex-end; }
+    .choice-disclosure { margin-top: 18px; font-size: 11px; color: #52605b; }
+    .how { padding: 62px 64px 74px; text-align: center; }
+    .how h2 { font: 400 46px/1.05 "DM Serif Display", Georgia, serif; margin: 0 0 12px; }
+    .how > p { color: #65706c; margin: 0 0 38px; }
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 38px; text-align: left; max-width: 1050px; margin: auto; }
+    .step-number { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 50%; background: #e8f5ef; color: #246346; font-weight: 900; margin-bottom: 15px; }
+    .step h3 { margin: 0 0 8px; font-size: 19px; }
+    .step p { color: #606a67; font-size: 14px; line-height: 1.55; margin: 0; }
+
+    /* VERSION 4 — EQRAZ HUMAN PROOF */
+    .v4 { font-family: "WNTL Text", "Helvetica Neue", Helvetica, Arial, sans-serif; }
+    .v4 .human-hero { padding: 58px 48px 0; background: #fff; }
+    .human-grid { min-height: 535px; display: grid; grid-template-columns: 1fr .92fr; gap: 42px; align-items: stretch; }
+    .human-copy { padding: 54px 16px 52px 16px; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; }
+    .v4 h1 { font-size: clamp(52px, 5vw, 72px); line-height: 1.02; letter-spacing: -.05em; font-weight: 500; margin: 14px 0 22px; max-width: 760px; }
+    .v4 h1 span { color: #4f7466; }
+    .human-copy > p { color: #515c58; font-size: 18px; line-height: 1.6; max-width: 625px; margin: 0 0 28px; }
+    .action-row { display: flex; gap: 12px; flex-wrap: wrap; }
+    .human-photo { min-height: 500px; border-radius: 38px 38px 120px 38px; position: relative; overflow: hidden; background: linear-gradient(150deg,#dbe9e3 0%,#f6f9f7 45%,#afc7bd 100%); }
+    .human-photo::before { content: ""; position: absolute; width: 76%; height: 65%; left: 12%; bottom: -12%; border-radius: 50% 50% 18% 18%; background: rgba(255,255,255,.7); }
+    .human-photo::after { content: "Approved Canadian family photography"; position: absolute; left: 24px; bottom: 24px; background: rgba(255,255,255,.94); color: #4e5a56; padding: 9px 12px; border-radius: 10px; font-size: 11px; }
+    .proof-ribbon { margin-top: -38px; position: relative; z-index: 3; display: grid; grid-template-columns: 1.4fr repeat(3, 1fr); gap: 1px; background: #dfe6e3; border: 1px solid #dfe6e3; border-radius: 24px; overflow: hidden; box-shadow: var(--shadow); }
+    .proof-ribbon > div { background: #fff; padding: 22px 24px; }
+    .proof-ribbon .intro { background: #edf5f1; }
+    .proof-ribbon strong { display: block; font-size: 14px; margin-bottom: 5px; }
+    .proof-ribbon span { color: #65706c; font-size: 11px; line-height: 1.45; }
+    .v4 .next-section { padding: 70px 48px 80px; display: grid; grid-template-columns: .7fr 1.3fr; gap: 52px; }
+    .v4 .next-section h2 { font-size: 40px; line-height: 1.08; letter-spacing: -.035em; font-weight: 500; margin: 0 0 14px; }
+    .journey-list { display: grid; gap: 12px; }
+    .journey-item { display: grid; grid-template-columns: auto 1fr auto; gap: 16px; align-items: center; padding: 20px 22px; background: #f7f9f8; border: 1px solid #e1e7e4; border-radius: 18px; text-decoration: none; }
+    .journey-item strong { display: block; margin-bottom: 4px; }
+    .journey-item small { color: #68716e; }
+
+    .font-note { margin: 0; padding: 16px 24px; background: #f6f8f7; border-top: 1px solid #e5e9e7; color: #64706c; font: 12px/1.5 "Helvetica Neue", Arial, sans-serif; text-align: center; }
+
+    @media (max-width: 960px) {
+      .theme-tabs { grid-template-columns: repeat(2, 1fr); }
+      .site-header { padding: 0 20px; grid-template-columns: auto auto; justify-content: space-between; }
+      .site-nav { display: none; }
+      .site-actions .quiet-link { display: none; }
+      .v1 .hero { min-height: 610px; padding-top: 92px; }
+      .orbit { opacity: .44; }
+      .pc2, .pc3 { display: none; }
+      .v1 .path-row, .evidence-row { grid-template-columns: 1fr; margin-left: 20px; margin-right: 20px; }
+      .v1 .proof-strip { margin-left: 20px; margin-right: 20px; grid-template-columns: 1fr 1fr; }
+      .v2 .evidence-hero, .human-grid, .v4 .next-section, .v2 .rate-panel { grid-template-columns: 1fr; }
+      .v2 .evidence-hero { margin: 20px; padding: 42px 28px; }
+      .evidence-row, .v2 .rate-panel { margin-left: 20px; margin-right: 20px; }
+      .choice-grid, .steps { grid-template-columns: 1fr; }
+      .v3 .choice-hero, .how { padding-left: 24px; padding-right: 24px; }
+      .human-grid { gap: 20px; }
+      .v4 .human-hero { padding: 28px 20px 0; }
+      .human-photo { min-height: 380px; }
+      .proof-ribbon { grid-template-columns: 1fr 1fr; }
+      .v4 .next-section { padding-left: 20px; padding-right: 20px; }
+    }
+
+    @media (max-width: 600px) {
+      .review-top { align-items: flex-start; flex-direction: column; gap: 3px; }
+      .review-top span:last-child { white-space: normal; }
+      .theme-tabs { grid-template-columns: 1fr; }
+      .site-header { min-height: 68px; }
+      .site-actions .pill { min-height: 42px; padding: 0 16px; font-size: 13px; }
+      .v1 h1, .v2 h1, .v3 h1, .v4 h1 { font-size: 43px; }
+      .v1 .hero { min-height: 530px; padding: 70px 18px 105px; }
+      .orbit { inset: 10px; opacity: .25; }
+      .photo-chip { width: 105px; height: 85px; }
+      .pc1 { left: -24px; } .pc4 { right: -24px; }
+      .pc5, .pc6 { display: none; }
+      .v1 .path-row { margin-top: -65px; }
+      .v1 .proof-strip, .proof-ribbon { grid-template-columns: 1fr; }
+      .proof-item { border-left: 0; border-top: 1px solid #cfdcd6; padding: 16px 0 0; }
+      .v2 .evidence-hero { margin: 12px; border-radius: 26px; padding: 36px 18px; }
+      .evidence-row, .v2 .rate-panel { margin-left: 12px; margin-right: 12px; }
+      .metric { grid-template-columns: 1fr; }
+      .v3 .choice-hero { padding-top: 42px; }
+      .choice-grid { grid-template-columns: 1fr; }
+      .human-copy { padding-top: 20px; }
+      .human-photo { min-height: 310px; border-radius: 28px 28px 72px 28px; }
+      .proof-ribbon { margin-top: 16px; }
+      .action-row { width: 100%; }
+      .action-row .pill { width: 100%; }
+    }
+
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  </style>
+</head>
+<body>
+  <div class="review-shell">
+    <div class="review-top">
+      <span><strong>EQRAZ design discussion</strong> · Same homepage, four visual systems</span>
+      <span>White-first · soft colour · no production assets or live rates</span>
+    </div>
+    <div class="theme-tabs" role="tablist" aria-label="Homepage theme versions">
+      <button class="theme-tab" id="tab-v1" role="tab" aria-controls="version-v1" aria-selected="true" data-version="v1">1 · Guided Premium<small>Rocket-inspired</small></button>
+      <button class="theme-tab" id="tab-v2" role="tab" aria-controls="version-v2" aria-selected="false" data-version="v2">2 · Evidence Authority<small>Bankrate + Ratehub</small></button>
+      <button class="theme-tab" id="tab-v3" role="tab" aria-controls="version-v3" aria-selected="false" data-version="v3">3 · Warm Choice<small>LendingTree-inspired</small></button>
+      <button class="theme-tab" id="tab-v4" role="tab" aria-controls="version-v4" aria-selected="false" data-version="v4">4 · Human Proof<small>EQRAZ hybrid</small></button>
+    </div>
+  </div>
+
+  <section class="version v1 active" id="version-v1" role="tabpanel" aria-labelledby="tab-v1">
+    <div class="site-wrap">
+      <header class="site-header">
+        <a class="brand" href="#">EQRAZ</a>
+        <nav class="site-nav" aria-label="Guided Premium navigation"><a href="#">Financing</a><a href="#">How it works</a><a href="#">Rates & calculators</a><a href="#">Learn</a><a href="#">About</a></nav>
+        <div class="site-actions"><a class="quiet-link" href="#">EN / FR</a><a class="pill" href="#">Book a call</a></div>
+      </header>
+      <main>
+        <section class="hero">
+          <div class="orbit" aria-hidden="true">
+            <div class="photo-chip pc1" data-label="Family moment"></div><div class="photo-chip pc2" data-label="Canadian home"></div><div class="photo-chip pc3" data-label="Human guidance"></div><div class="photo-chip pc4" data-label="New beginning"></div><div class="photo-chip pc5" data-label="Real people"></div><div class="photo-chip pc6" data-label="Clear path"></div>
+          </div>
+          <div class="hero-copy">
+            <div class="eyebrow">Halal home financing, made clear</div>
+            <h1>A calmer path <span>to your next home.</span></h1>
+            <p>Understand the structure, explore your numbers privately, and speak with a person when you are ready.</p>
+            <a class="pill" href="#">Explore your options</a>
+          </div>
+        </section>
+        <div class="path-row">
+          <a class="path-card" href="#"><span class="soft-icon">01</span><span><strong>Understand</strong><small>See how Monthly Murabaha works.</small></span><span class="arrow">→</span></a>
+          <a class="path-card" href="#"><span class="soft-icon">02</span><span><strong>Estimate</strong><small>Use private, anonymous calculators.</small></span><span class="arrow">→</span></a>
+          <a class="path-card" href="#"><span class="soft-icon">03</span><span><strong>Move forward</strong><small>Book a no-pressure conversation.</small></span><span class="arrow">→</span></a>
+        </div>
+        <section class="proof-strip">
+          <h2>Warm guidance.<br>Serious evidence.</h2>
+          <div class="proof-item"><strong>Shariah governance</strong><span>Issued documents shown with scope and date.</span></div>
+          <div class="proof-item"><strong>Private by design</strong><span>Calculators stay anonymous and unsaved.</span></div>
+          <div class="proof-item"><strong>Canadian context</strong><span>Availability and licensing are province-specific.</span></div>
+        </section>
+      </main>
+      <p class="font-note">Typography reference: Rocket Mortgage “WNTL Text.” Prototype uses the named family with Helvetica/Arial fallbacks; no Rocket font file is copied.</p>
+    </div>
+  </section>
+
+  <section class="version v2" id="version-v2" role="tabpanel" aria-labelledby="tab-v2" hidden>
+    <div class="site-wrap">
+      <header class="site-header">
+        <a class="brand" href="#">EQRAZ</a>
+        <nav class="site-nav" aria-label="Evidence Authority navigation"><a href="#">Home financing</a><a href="#">Why EQRAZ</a><a href="#">Rates & tools</a><a href="#">Evidence</a><a href="#">Learn</a></nav>
+        <div class="site-actions"><a class="quiet-link" href="#">EN / FR</a><a class="pill" href="#">Book a call</a></div>
+      </header>
+      <main>
+        <section class="evidence-hero">
+          <div>
+            <div class="eyebrow">Clear structure. Verifiable evidence.</div>
+            <h1>Home financing you can examine—not just accept.</h1>
+            <p class="lead">See how the structure works, what governs it, and what your numbers may look like before sharing personal information.</p>
+            <a class="pill" href="#">See how EQRAZ works</a>
+          </div>
+          <div class="task-stack">
+            <a class="task-card" href="#"><span class="soft-icon">⌂</span><span><h2>Understand the structure</h2><p>Follow the transaction and customer journey.</p></span><span class="arrow">→</span></a>
+            <a class="task-card" href="#"><span class="soft-icon">%</span><span><h2>Estimate your scenario</h2><p>Use five anonymous planning tools.</p></span><span class="arrow">→</span></a>
+            <a class="task-card" href="#"><span class="soft-icon">✓</span><span><h2>Review the evidence</h2><p>Read current, scoped governance records.</p></span><span class="arrow">→</span></a>
+          </div>
+        </section>
+        <div class="evidence-row">
+          <div class="metric"><strong>5</strong><span>anonymous calculator families preserved</span></div>
+          <div class="metric"><strong>10</strong><span>province records with effective dates</span></div>
+          <div class="metric"><strong>0</strong><span>personal fields before required consent</span></div>
+        </div>
+        <section class="rate-panel">
+          <div><div class="eyebrow">Rates with context</div><h2>Numbers should always show their assumptions.</h2><p class="micro">Sample layout only. No rate is approved for publication in this design review.</p></div>
+          <div class="rate-record"><span><b>Special Offer rate</b><br><span>Illustrative value · effective date required</span></span><strong>—.—%</strong><span>Rate type, source owner and conditions remain visible.</span><a href="#">View rates and methodology →</a></div>
+        </section>
+      </main>
+      <p class="font-note">Typography reference: Bankrate “Recife Text” + “Instrument Sans.” Instrument Sans is loaded; Recife Text uses a Georgia fallback until licensed.</p>
+    </div>
+  </section>
+
+  <section class="version v3" id="version-v3" role="tabpanel" aria-labelledby="tab-v3" hidden>
+    <div class="site-wrap">
+      <header class="site-header">
+        <a class="brand" href="#">EQRAZ</a>
+        <nav class="site-nav" aria-label="Warm Choice navigation"><a href="#">Financing</a><a href="#">Calculators</a><a href="#">Why halal</a><a href="#">Learn</a><a href="#">Partners</a></nav>
+        <div class="site-actions"><a class="quiet-link" href="#">EN / FR</a><a class="pill" href="#">Book a call</a></div>
+      </header>
+      <main>
+        <section class="choice-hero">
+          <div class="eyebrow">Start wherever you are</div>
+          <h1>Stop wondering. Start with clarity.</h1>
+          <p>Choose the question that sounds most like yours. No pressure, and no personal details required to explore.</p>
+          <div class="choice-chips"><button class="choice-chip active">Top questions</button><button class="choice-chip">I’m learning</button><button class="choice-chip">I’m calculating</button><button class="choice-chip">I’m ready</button></div>
+          <div class="choice-grid">
+            <a class="choice-card" href="#"><span class="soft-icon">?</span><span><strong>Is it really halal?</strong><p>See the structure, oversight and issued evidence.</p></span><span class="arrow">→</span></a>
+            <a class="choice-card" href="#"><span class="soft-icon">⌂</span><span><strong>What might I afford?</strong><p>Estimate privately with clear assumptions.</p></span><span class="arrow">→</span></a>
+            <a class="choice-card" href="#"><span class="soft-icon">→</span><span><strong>How do I get started?</strong><p>See Book, Pre-Approval and Apply clearly separated.</p></span><span class="arrow">→</span></a>
+          </div>
+          <div class="choice-disclosure">Private browsing · Calculators remain anonymous · No obligation</div>
+        </section>
+        <section class="how">
+          <h2>Here’s how it works</h2>
+          <p>Three understandable stages, with the evidence available when you want it.</p>
+          <div class="steps">
+            <div class="step"><span class="step-number">1</span><h3>Learn without pressure</h3><p>Understand the transaction, terminology and customer journey.</p></div>
+            <div class="step"><span class="step-number">2</span><h3>Explore your numbers</h3><p>Use anonymous calculators with visible rates, dates and assumptions.</p></div>
+            <div class="step"><span class="step-number">3</span><h3>Choose your next step</h3><p>Book, seek preliminary pre-approval or continue to the secure application route.</p></div>
+          </div>
+        </section>
+      </main>
+      <p class="font-note">Typography reference: LendingTree “DM Serif Display” + “Lato.” Both open webfont families are loaded directly for this prototype.</p>
+    </div>
+  </section>
+
+  <section class="version v4" id="version-v4" role="tabpanel" aria-labelledby="tab-v4" hidden>
+    <div class="site-wrap">
+      <header class="site-header">
+        <a class="brand" href="#">EQRAZ</a>
+        <nav class="site-nav" aria-label="Human Proof navigation"><a href="#">Financing</a><a href="#">How it works</a><a href="#">Rates & calculators</a><a href="#">Trust</a><a href="#">Learn</a></nav>
+        <div class="site-actions"><a class="quiet-link" href="#">EN / FR</a><a class="pill" href="#">Book a call</a></div>
+      </header>
+      <main>
+        <section class="human-hero">
+          <div class="human-grid">
+            <div class="human-copy">
+              <div class="eyebrow">Made for careful decisions</div>
+              <h1>Home financing that respects <span>your values—and your questions.</span></h1>
+              <p>A human first experience with serious evidence close at hand. Learn, calculate and speak with someone at your pace.</p>
+              <div class="action-row"><a class="pill" href="#">Book a free consultation</a><a class="pill light" href="#">Explore anonymously</a></div>
+            </div>
+            <div class="human-photo" role="img" aria-label="Placeholder for rights-cleared Canadian Muslim family photography"></div>
+          </div>
+          <div class="proof-ribbon">
+            <div class="intro"><strong>Proof without the coldness</strong><span>Important evidence stays visible and understandable.</span></div>
+            <div><strong>Shariah evidence</strong><span>Issuer · scope · date</span></div>
+            <div><strong>Private calculators</strong><span>Anonymous · unsaved</span></div>
+            <div><strong>Province clarity</strong><span>Availability · licence state</span></div>
+          </div>
+        </section>
+        <section class="next-section">
+          <div><div class="eyebrow">Choose your pace</div><h2>Start with the question you have today.</h2><p class="micro">Each route makes the consequence clear before asking you to act.</p></div>
+          <div class="journey-list">
+            <a class="journey-item" href="#"><span class="soft-icon">01</span><span><strong>I want to understand halal home financing.</strong><small>Structure, process and evidence in plain language.</small></span><span class="arrow">→</span></a>
+            <a class="journey-item" href="#"><span class="soft-icon">02</span><span><strong>I want to estimate my situation.</strong><small>Five private calculators with transparent assumptions.</small></span><span class="arrow">→</span></a>
+            <a class="journey-item" href="#"><span class="soft-icon">03</span><span><strong>I’m ready to speak with someone.</strong><small>A no-pressure consultation with a clear privacy boundary.</small></span><span class="arrow">→</span></a>
+          </div>
+        </section>
+      </main>
+      <p class="font-note">Typography reference: Rocket’s “WNTL Text” rhythm, adapted to EQRAZ. Prototype uses the named family with Helvetica/Arial fallbacks; no commercial font file is copied.</p>
+    </div>
+  </section>
+
+  <script>
+    const tabs = [...document.querySelectorAll('.theme-tab')];
+    const versions = [...document.querySelectorAll('.version')];
+
+    function showVersion(name, moveFocus = false) {
+      tabs.forEach((tab) => {
+        const selected = tab.dataset.version === name;
+        tab.setAttribute('aria-selected', String(selected));
+        tab.tabIndex = selected ? 0 : -1;
+        if (selected && moveFocus) tab.focus();
+      });
+      versions.forEach((version) => {
+        const selected = version.id === `version-${name}`;
+        version.classList.toggle('active', selected);
+        version.hidden = !selected;
+      });
+      history.replaceState(null, '', `#${name}`);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    tabs.forEach((tab, index) => {
+      tab.addEventListener('click', () => showVersion(tab.dataset.version));
+      tab.addEventListener('keydown', (event) => {
+        if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+        event.preventDefault();
+        let next = index;
+        if (event.key === 'ArrowRight') next = (index + 1) % tabs.length;
+        if (event.key === 'ArrowLeft') next = (index - 1 + tabs.length) % tabs.length;
+        if (event.key === 'Home') next = 0;
+        if (event.key === 'End') next = tabs.length - 1;
+        showVersion(tabs[next].dataset.version, true);
+      });
+    });
+
+    const requested = location.hash.replace('#', '');
+    if (['v1','v2','v3','v4'].includes(requested)) showVersion(requested);
+  </script>
+</body>
+</html>
